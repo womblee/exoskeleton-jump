@@ -73,6 +73,18 @@ hook.Add('Think', 'CPG_AristJump', function()
     end
 end)
 
+-- Refill
+timer.Create('CPG_AristRefill', 45, 0, function()
+    for k, v in pairs(player.GetAll()) do
+        if not v:Alive() then continue end
+        if v:Team() ~= jumping_team then continue end
+        
+        if v:GetNWInt('CPG_AristJumps') < default_amount then
+            v:SetNWInt('CPG_AristJumps', v:GetNWInt('CPG_AristJumps') + 1)
+        end
+    end
+end)
+
 -- Same here
 hook.Add('GetFallDamage', 'CPG_AristJump', function(ply, speed)
 	if ply:Team() ~= jumping_team then return end
