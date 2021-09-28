@@ -56,6 +56,20 @@ hook.Add("SetupMove", "CPG_AristJump", function(ply, mv)
         ply:SetVelocity(ply:GetUp() * 450)
     
         timer.Simple(0.2, function()
+	        local foot = {
+                    'L',
+                    'R',
+                }
+
+                for k, v in pairs(foot) do
+                    local pos, ang = ply:GetBonePosition(ply:LookupBone('ValveBiped.Bip01_' .. v ..'_Foot'))
+                
+                    local effectdata = EffectData()
+                    effectdata:SetOrigin(pos)
+                    effectdata:SetMagnitude(0.6)
+                    util.Effect("cball_bounce", effectdata, true)
+                end
+					
         	ply:EmitSound('ambient/machines/catapult_throw.wav', 120)
         	ply:SetVelocity(ply:GetForward() * 590 + Vector(0, 0, ply:GetUp().x + 500))
         end)
