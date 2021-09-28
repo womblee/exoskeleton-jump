@@ -62,7 +62,7 @@ hook.Add("SetupMove", "CPG_AristJump", function(ply, mv)
                 }
 
                 for k, v in pairs(foot) do
-                    local pos, ang = ply:GetBonePosition(ply:LookupBone('ValveBiped.Bip01_' .. v ..'_Foot'))
+                    local pos, ang = ply:GetBonePosition(ply:LookupBone('ValveBiped.Bip01_' .. v .. '_Foot'))
                 
                     local effectdata = EffectData()
                     effectdata:SetOrigin(pos)
