@@ -71,7 +71,7 @@ hook.Add('Think', 'CPG_AristJump', function()
         if v.ARJumping and v.ARJumping == true and v:OnGround() then
             -- Let's be 100% sure that we get a stable experience, timer + bool = love
             local aaa = false
-            timer.Simple(0.2, function()
+            timer.Simple(1, function()
                 if aaa then return end
 
                 v.ARJumping = false
