@@ -1,6 +1,14 @@
 local default_amount = 40
 local jumping_team = TEAM_CP_ARIST
 
+hook.Add("PlayerSpawn", "CPG_AristJumps", function(ply)
+    if IsValid(ply) then
+        if ply:Team() ~= jumping_team then return end
+
+        ply:SetNWInt('CPG_AristJumps', default_amount)
+    end
+end)
+
 hook.Add("PlayerDeath", "CPG_AristJumps", function(victim, weapon, killer)
     if IsValid(victim) and IsValid(killer) then
     	if victim:Team() ~= jumping_team then return end
