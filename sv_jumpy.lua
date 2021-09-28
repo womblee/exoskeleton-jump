@@ -48,7 +48,9 @@ hook.Add("SetupMove", "CPG_AristJump", function(ply, mv)
     
     if not ply:OnGround() then
         -- Absolute godly fix
-        ply.ARJumping = true
+        timer.Simple(0.5, function()
+            ply.ARJumping = true
+        end)
 
         ply:EmitSound('player/suit_sprint.wav', 120)
         ply:SetVelocity(ply:GetUp() * 450)
