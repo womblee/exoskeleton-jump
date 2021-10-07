@@ -28,6 +28,7 @@ end)
 local bad_move_types = {MOVETYPE_NOCLIP, MOVETYPE_LADDER, MOVETYPE_OBSERVER, MOVETYPE_ISOMETRIC, MOVETYPE_FLY, MOVETYPE_FLYGRAVITY}
 hook.Add("SetupMove", "CPG_AristJump", function(ply, mv)
 	if ply.ARJCooldown and ply.ARJCooldown > CurTime() then return end
+	if not ply:Alive() then return end
     if table.HasValue(bad_move_types, ply:GetMoveType()) then return end
     if ply:IsFrozen() then return end
 		
